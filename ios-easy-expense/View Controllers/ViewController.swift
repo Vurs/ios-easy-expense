@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         dateFormatter.timeStyle = .none
         dateFormatter.dateStyle = .medium
         
-        // Create the Transaction sample object and print it as a POC
+        // Test
         let transaction : Transaction = Transaction.init()
         transaction.initWithData(TransactionType: Transaction.TransactionType.Expense, TransactionName: "Demo Transaction", Recurring: true, Date: date!, AmountTransacted: 100.00)
         
