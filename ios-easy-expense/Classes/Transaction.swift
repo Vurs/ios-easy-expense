@@ -1,6 +1,6 @@
 //
 //  Transaction.swift
-//  EasyExpense
+//  ios-easy-expense
 //
 //  Created by Vincent Ursino on 2023-04-04.
 //
@@ -8,7 +8,7 @@
 import UIKit
 
 class Transaction: NSObject {
-    enum TransactionType {
+    enum TransactionType: String, CaseIterable {
         case Expense
         case Income
         case Transfer
