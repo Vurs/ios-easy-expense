@@ -20,6 +20,7 @@ class Transaction: NSObject {
     var date : Date!
     var amountTransacted : Decimal!
     
+    
     func initWithData(TransactionType transactionType : TransactionType, TransactionName transactionName : String, Recurring recurring : Bool, Date date : Date, AmountTransacted amountTransacted : Decimal) {
         self.transactionType = transactionType
         self.transactionName = transactionName

@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  ios-easy-expense
 //
-//  Created by  on 2023-04-04.
+//  Created by Vincent Ursino on 2023-04-04.
 //
 
 import UIKit
