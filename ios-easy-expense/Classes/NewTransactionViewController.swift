@@ -41,8 +41,6 @@ class NewTransactionViewController: UIViewController {
         // Define date formatter params for printing purposes
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        dateFormatter.timeStyle = .none
-        dateFormatter.dateStyle = .medium
         
         // Create the Transaction object with the inputted values
         let transaction : Transaction = Transaction.init()

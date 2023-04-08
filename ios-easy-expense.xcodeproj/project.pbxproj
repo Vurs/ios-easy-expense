@@ -15,6 +15,10 @@
 		F377020E29DCA2F100D06AF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F377020D29DCA2F100D06AF8 /* Assets.xcassets */; };
 		F377021129DCA2F100D06AF8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F377020F29DCA2F100D06AF8 /* LaunchScreen.storyboard */; };
 		F377021E29DCA36900D06AF8 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377021D29DCA36900D06AF8 /* Transaction.swift */; };
+		F37F102629E21A80006675EE /* EasyExpense.db in Resources */ = {isa = PBXBuildFile; fileRef = F37F102529E21A80006675EE /* EasyExpense.db */; };
+		F37F102829E21AE1006675EE /* ViewTransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37F102729E21AE1006675EE /* ViewTransactionsViewController.swift */; };
+		F37F102C29E21EFB006675EE /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F37F102A29E21EF2006675EE /* libsqlite3.0.tbd */; };
+		F37F102D29E21EFB006675EE /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F37F102B29E21EF2006675EE /* libsqlite3.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		F377021029DCA2F100D06AF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F377021229DCA2F100D06AF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F377021D29DCA36900D06AF8 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		F37F102529E21A80006675EE /* EasyExpense.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = EasyExpense.db; sourceTree = "<group>"; };
+		F37F102729E21AE1006675EE /* ViewTransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTransactionsViewController.swift; sourceTree = "<group>"; };
+		F37F102A29E21EF2006675EE /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		F37F102B29E21EF2006675EE /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +43,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F37F102D29E21EFB006675EE /* libsqlite3.tbd in Frameworks */,
+				F37F102C29E21EFB006675EE /* libsqlite3.0.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +56,7 @@
 			children = (
 				F377020329DCA2F000D06AF8 /* ios-easy-expense */,
 				F377020229DCA2F000D06AF8 /* Products */,
+				F37F102929E21EF2006675EE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,6 +84,7 @@
 		F377021829DCA31600D06AF8 /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				F37F102529E21A80006675EE /* EasyExpense.db */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -101,6 +113,7 @@
 				F377020429DCA2F000D06AF8 /* AppDelegate.swift */,
 				F377021D29DCA36900D06AF8 /* Transaction.swift */,
 				F329C16F29DE232300285C4D /* NewTransactionViewController.swift */,
+				F37F102729E21AE1006675EE /* ViewTransactionsViewController.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -111,6 +124,15 @@
 				F377020829DCA2F000D06AF8 /* ViewController.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		F37F102929E21EF2006675EE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F37F102A29E21EF2006675EE /* libsqlite3.0.tbd */,
+				F37F102B29E21EF2006675EE /* libsqlite3.tbd */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,6 +193,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F37F102629E21A80006675EE /* EasyExpense.db in Resources */,
 				F377021129DCA2F100D06AF8 /* LaunchScreen.storyboard in Resources */,
 				F377020E29DCA2F100D06AF8 /* Assets.xcassets in Resources */,
 				F377020C29DCA2F000D06AF8 /* Main.storyboard in Resources */,
@@ -186,6 +209,7 @@
 			files = (
 				F377020929DCA2F000D06AF8 /* ViewController.swift in Sources */,
 				F377020529DCA2F000D06AF8 /* AppDelegate.swift in Sources */,
+				F37F102829E21AE1006675EE /* ViewTransactionsViewController.swift in Sources */,
 				F377021E29DCA36900D06AF8 /* Transaction.swift in Sources */,
 				F377020729DCA2F000D06AF8 /* SceneDelegate.swift in Sources */,
 				F329C17029DE232300285C4D /* NewTransactionViewController.swift in Sources */,

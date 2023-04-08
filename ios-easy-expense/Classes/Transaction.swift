@@ -8,7 +8,7 @@
 import UIKit
 
 class Transaction: NSObject {
-    enum TransactionType: String, CaseIterable {
+    enum TransactionType: Int, CaseIterable {
         case Expense
         case Income
         case Transfer
@@ -19,7 +19,7 @@ class Transaction: NSObject {
     var recurring : Bool!
     var date : Date!
     var amountTransacted : Decimal!
-    
+    var attachedImg : Data!
     
     func initWithData(TransactionType transactionType : TransactionType, TransactionName transactionName : String, Recurring recurring : Bool, Date date : Date, AmountTransacted amountTransacted : Decimal) {
         self.transactionType = transactionType
