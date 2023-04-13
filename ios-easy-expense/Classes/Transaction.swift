@@ -21,12 +21,13 @@ class Transaction: NSObject {
     var amountTransacted : Decimal!
     var attachedImg : Data!
     
-    func initWithData(TransactionType transactionType : TransactionType, TransactionName transactionName : String, Recurring recurring : Bool, Date date : Date, AmountTransacted amountTransacted : Decimal) {
+    func initWithData(TransactionType transactionType : TransactionType, TransactionName transactionName : String, Recurring recurring : Bool, Date date : Date, AmountTransacted amountTransacted : Decimal, ImageData attachedImg : Data) {
         self.transactionType = transactionType
         self.transactionName = transactionName
         self.recurring = recurring
         self.date = date
         self.amountTransacted = amountTransacted
+        self.attachedImg = attachedImg
     }
     
     func getTypeAsString() -> String {

@@ -14,7 +14,7 @@ class CustomCell: UITableViewCell {
     let recurringLbl = UILabel()
     let dateLbl = UILabel()
     let amountTransactedLbl = UILabel()
-    let attachedImgView = UILabel()
+    let attachedImgView = UIImageView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         transactionTypeLbl.textAlignment = .left

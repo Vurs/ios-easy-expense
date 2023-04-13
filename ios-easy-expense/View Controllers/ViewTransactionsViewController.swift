@@ -29,12 +29,19 @@ class ViewTransactionsViewController: UIViewController, UITableViewDataSource, U
         tableCell.dateLbl.text = mainDelegate.transactions[rowNum].getDateAsString()
         tableCell.amountTransactedLbl.text = mainDelegate.transactions[rowNum].amountTransacted.description
         
-        // Handle Image here
+        // If there is image data, convert it to a UIImage and display it
+        if let imageData = mainDelegate.transactions[rowNum].attachedImg {
+            let image = UIImage(data: imageData)
+            tableCell.attachedImgView.image = image
+        }
+        
+        // TODO: Add a default image for when image data is not available
         
         tableCell.accessoryType = .disclosureIndicator
         return tableCell
     }
     
+    // TODO: Either use this or right/left sliding to allow user to see more info about each transaction & view the receipt in full view
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let rowNum = indexPath.row
         
