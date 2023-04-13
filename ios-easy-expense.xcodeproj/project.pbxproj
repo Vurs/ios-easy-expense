@@ -19,6 +19,7 @@
 		F37F102829E21AE1006675EE /* ViewTransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37F102729E21AE1006675EE /* ViewTransactionsViewController.swift */; };
 		F37F102C29E21EFB006675EE /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F37F102A29E21EF2006675EE /* libsqlite3.0.tbd */; };
 		F37F102D29E21EFB006675EE /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F37F102B29E21EF2006675EE /* libsqlite3.tbd */; };
+		F3C9748929E7844B003A0A95 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9748829E7844B003A0A95 /* CustomCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		F37F102729E21AE1006675EE /* ViewTransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTransactionsViewController.swift; sourceTree = "<group>"; };
 		F37F102A29E21EF2006675EE /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		F37F102B29E21EF2006675EE /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		F3C9748829E7844B003A0A95 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,8 +114,7 @@
 				F377020629DCA2F000D06AF8 /* SceneDelegate.swift */,
 				F377020429DCA2F000D06AF8 /* AppDelegate.swift */,
 				F377021D29DCA36900D06AF8 /* Transaction.swift */,
-				F329C16F29DE232300285C4D /* NewTransactionViewController.swift */,
-				F37F102729E21AE1006675EE /* ViewTransactionsViewController.swift */,
+				F3C9748829E7844B003A0A95 /* CustomCell.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -121,6 +122,8 @@
 		F377021C29DCA33600D06AF8 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F329C16F29DE232300285C4D /* NewTransactionViewController.swift */,
+				F37F102729E21AE1006675EE /* ViewTransactionsViewController.swift */,
 				F377020829DCA2F000D06AF8 /* ViewController.swift */,
 			);
 			path = "View Controllers";
@@ -212,6 +215,7 @@
 				F37F102829E21AE1006675EE /* ViewTransactionsViewController.swift in Sources */,
 				F377021E29DCA36900D06AF8 /* Transaction.swift in Sources */,
 				F377020729DCA2F000D06AF8 /* SceneDelegate.swift in Sources */,
+				F3C9748929E7844B003A0A95 /* CustomCell.swift in Sources */,
 				F329C17029DE232300285C4D /* NewTransactionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

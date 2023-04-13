@@ -28,4 +28,26 @@ class Transaction: NSObject {
         self.date = date
         self.amountTransacted = amountTransacted
     }
+    
+    func getTypeAsString() -> String {
+        switch self.transactionType.rawValue {
+        case 0:
+            return "Expense"
+        case 1:
+            return "Income"
+        case 2:
+            return "Transfer"
+        default:
+            return "Undefined"
+        }
+    }
+    
+    func getDateAsString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = self.date!
+        let dateString = dateFormatter.string(from: date)
+        
+        return dateString
+    }
 }

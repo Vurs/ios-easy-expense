@@ -60,10 +60,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let date = String(cString: cDate!)
                     
                     // Fetch the Image blob and convert it to a Data object
-                    let imageData = sqlite3_column_blob(queryStatement, 6)
-                    let imageLength = sqlite3_column_bytes(queryStatement, 6)
-                    let imageDataPtr = UnsafeRawPointer(imageData!)
-                    let imageDataData = Data(bytes: imageDataPtr, count: Int(imageLength))
+                    //let imageData = sqlite3_column_blob(queryStatement, 6)
+                    //let imageLength = sqlite3_column_bytes(queryStatement, 6)
+                    //let imageDataPtr = UnsafeRawPointer(imageData!)
+                    //let imageDataData = Data(bytes: imageDataPtr, count: Int(imageLength))
                     
                     // Convert Date String to a Date object, and Recurring to a boolean
                     let dateFormatter = DateFormatter()
