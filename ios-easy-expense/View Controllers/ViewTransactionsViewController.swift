@@ -11,6 +11,10 @@ class ViewTransactionsViewController: UIViewController, UITableViewDataSource, U
 
     let mainDelegate = UIApplication.shared.delegate as! AppDelegate
     
+    @IBOutlet var leftToSpend : UILabel!
+    
+    let defaults = UserDefaults.standard
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return mainDelegate.transactions.count
     }
@@ -23,19 +27,30 @@ class ViewTransactionsViewController: UIViewController, UITableViewDataSource, U
         let tableCell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CustomCell ?? CustomCell(style: .default, reuseIdentifier: "cell")
         
         let rowNum = indexPath.row
-        tableCell.transactionTypeLbl.text = mainDelegate.transactions[rowNum].getTypeAsString()
+        
+        let amountTransacted = mainDelegate.transactions[rowNum].amountTransacted
+        let amountStr = amountTransacted!.description
+        var amountDbl = 0.0
+        
+        if let temp = Double(amountStr) {
+            amountDbl = temp
+        }
+        
+        let formattedAmountStr = String(format: "%.2f", amountDbl)
+
+        tableCell.headerLbl.text = mainDelegate.transactions[rowNum].getTypeAsString() + " - $" + formattedAmountStr
         tableCell.transactionNameLbl.text = mainDelegate.transactions[rowNum].transactionName
-        tableCell.recurringLbl.text = mainDelegate.transactions[rowNum].recurring ? "Recurring" : ""
-        tableCell.dateLbl.text = mainDelegate.transactions[rowNum].getDateAsString()
-        tableCell.amountTransactedLbl.text = mainDelegate.transactions[rowNum].amountTransacted.description
+        tableCell.dateLbl.text = mainDelegate.transactions[rowNum].getDateAsReadableString()
+        
+        if mainDelegate.transactions[rowNum].recurring == true {
+            tableCell.dateLbl.text! += " - Recurring"
+        }
         
         // If there is image data, convert it to a UIImage and display it
         if let imageData = mainDelegate.transactions[rowNum].attachedImg {
             let image = UIImage(data: imageData)
             tableCell.attachedImgView.image = image
         }
-        
-        // TODO: Add a default image for when image data is not available
         
         tableCell.accessoryType = .disclosureIndicator
         return tableCell
@@ -57,6 +72,31 @@ class ViewTransactionsViewController: UIViewController, UITableViewDataSource, U
 
         // Do any additional setup after loading the view.
         mainDelegate.readDataFromDatabase()
+        
+        var amountToDeduct = 0.0
+        for transaction in mainDelegate.transactions {
+            if transaction.transactionType == Transaction.TransactionType.Expense || transaction.transactionType == Transaction.TransactionType.Transfer {
+                amountToDeduct += Double(truncating: transaction.amountTransacted as NSNumber)
+            } else if transaction.transactionType == Transaction.TransactionType.Income {
+                amountToDeduct -= Double(truncating: transaction.amountTransacted as NSNumber)
+            }
+        }
+        
+        var budget = 0.0
+        
+        if let tempBudget = defaults.object(forKey: "Budget") as? Double {
+            budget = tempBudget
+        }
+        
+        let remainingBudget = budget - amountToDeduct
+        
+        var returnString = String(remainingBudget)
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        if let myNumber = formatter.number(from: returnString) {
+            returnString = formatter.string(from: myNumber)!
+        }
+        
+        leftToSpend.text = "$\(returnString)"
     }
-
 }

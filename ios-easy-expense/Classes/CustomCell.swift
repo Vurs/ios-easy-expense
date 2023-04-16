@@ -9,21 +9,20 @@ import UIKit
 
 class CustomCell: UITableViewCell {
     
-    let transactionTypeLbl = UILabel()
+    let headerLbl = UILabel()
     let transactionNameLbl = UILabel()
     let recurringLbl = UILabel()
     let dateLbl = UILabel()
-    let amountTransactedLbl = UILabel()
     let attachedImgView = UIImageView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        transactionTypeLbl.textAlignment = .left
-        transactionTypeLbl.font = UIFont.boldSystemFont(ofSize: 12)
-        transactionTypeLbl.backgroundColor = .clear
-        transactionTypeLbl.textColor = .black
+        headerLbl.textAlignment = .left
+        headerLbl.font = UIFont.boldSystemFont(ofSize: 24)
+        headerLbl.backgroundColor = .clear
+        headerLbl.textColor = .black
         
         transactionNameLbl.textAlignment = .left
-        transactionNameLbl.font = UIFont.boldSystemFont(ofSize: 12)
+        transactionNameLbl.font = UIFont.boldSystemFont(ofSize: 18)
         transactionNameLbl.backgroundColor = .clear
         transactionNameLbl.textColor = .black
         
@@ -33,22 +32,16 @@ class CustomCell: UITableViewCell {
         recurringLbl.textColor = .black
         
         dateLbl.textAlignment = .left
-        dateLbl.font = UIFont.boldSystemFont(ofSize: 12)
+        dateLbl.font = UIFont.boldSystemFont(ofSize: 18)
         dateLbl.backgroundColor = .clear
         dateLbl.textColor = .black
         
-        amountTransactedLbl.textAlignment = .left
-        amountTransactedLbl.font = UIFont.boldSystemFont(ofSize: 12)
-        amountTransactedLbl.backgroundColor = .clear
-        amountTransactedLbl.textColor = .black
-        
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        contentView.addSubview(transactionTypeLbl)
+        contentView.addSubview(headerLbl)
         contentView.addSubview(transactionNameLbl)
         contentView.addSubview(recurringLbl)
         contentView.addSubview(dateLbl)
-        contentView.addSubview(amountTransactedLbl)
         contentView.addSubview(attachedImgView)
     }
     
@@ -57,12 +50,11 @@ class CustomCell: UITableViewCell {
     }
     
     override func layoutSubviews() {
-        transactionTypeLbl.frame = CGRect(x: 100, y: 5, width: 460, height: 20)
-        transactionNameLbl.frame = CGRect(x: 100, y: 30, width: 460, height: 20)
-        recurringLbl.frame = CGRect(x: 100, y: 55, width: 460, height: 20)
-        dateLbl.frame = CGRect(x: 100, y: 80, width: 460, height: 20)
-        amountTransactedLbl.frame = CGRect(x: 100, y: 105, width: 460, height: 20)
-        attachedImgView.frame = CGRect(x: 5, y: 5, width: 65, height: 65)
+        headerLbl.frame = CGRect(x: 135, y: 5, width: 460, height: 30)
+        transactionNameLbl.frame = CGRect(x: 135, y: 40, width: 460, height: 24)
+        dateLbl.frame = CGRect(x: 135, y: 69, width: 460, height: 24)
+        recurringLbl.frame = CGRect(x: 135, y: 99, width: 460, height: 24)
+        attachedImgView.frame = CGRect(x: 20, y: 10, width: 80, height: 80)
     }
 
     override func awakeFromNib() {

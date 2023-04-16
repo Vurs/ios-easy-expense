@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		F329C17029DE232300285C4D /* NewTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F329C16F29DE232300285C4D /* NewTransactionViewController.swift */; };
+		F347555029EBA54F006A2F6A /* BudgetBuilderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F347554F29EBA54F006A2F6A /* BudgetBuilderViewController.swift */; };
+		F3631AE529EB5E1800FC347F /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3631AE429EB5E1800FC347F /* WebViewController.swift */; };
+		F3631AEA29EB6A7F00FC347F /* Cash-Register-Audio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F3631AE929EB6A7F00FC347F /* Cash-Register-Audio.mp3 */; };
+		F365F1EB29EB31AF00EEA9FA /* CoreHaptics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F365F1EA29EB31AF00EEA9FA /* CoreHaptics.framework */; };
+		F365F1ED29EB3BE400EEA9FA /* Vision.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F365F1EC29EB3BE400EEA9FA /* Vision.framework */; };
 		F377020529DCA2F000D06AF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377020429DCA2F000D06AF8 /* AppDelegate.swift */; };
 		F377020729DCA2F000D06AF8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377020629DCA2F000D06AF8 /* SceneDelegate.swift */; };
 		F377020929DCA2F000D06AF8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377020829DCA2F000D06AF8 /* ViewController.swift */; };
@@ -24,6 +29,11 @@
 
 /* Begin PBXFileReference section */
 		F329C16F29DE232300285C4D /* NewTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTransactionViewController.swift; sourceTree = "<group>"; };
+		F347554F29EBA54F006A2F6A /* BudgetBuilderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetBuilderViewController.swift; sourceTree = "<group>"; };
+		F3631AE429EB5E1800FC347F /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		F3631AE929EB6A7F00FC347F /* Cash-Register-Audio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Cash-Register-Audio.mp3"; sourceTree = "<group>"; };
+		F365F1EA29EB31AF00EEA9FA /* CoreHaptics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreHaptics.framework; path = System/Library/Frameworks/CoreHaptics.framework; sourceTree = SDKROOT; };
+		F365F1EC29EB3BE400EEA9FA /* Vision.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Vision.framework; path = System/Library/Frameworks/Vision.framework; sourceTree = SDKROOT; };
 		F377020129DCA2F000D06AF8 /* ios-easy-expense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-easy-expense.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F377020429DCA2F000D06AF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F377020629DCA2F000D06AF8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,7 +55,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F365F1ED29EB3BE400EEA9FA /* Vision.framework in Frameworks */,
 				F37F102D29E21EFB006675EE /* libsqlite3.tbd in Frameworks */,
+				F365F1EB29EB31AF00EEA9FA /* CoreHaptics.framework in Frameworks */,
 				F37F102C29E21EFB006675EE /* libsqlite3.0.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -53,6 +65,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F3631AE829EB6A4C00FC347F /* Audios */ = {
+			isa = PBXGroup;
+			children = (
+				F3631AE929EB6A7F00FC347F /* Cash-Register-Audio.mp3 */,
+			);
+			path = Audios;
+			sourceTree = "<group>";
+		};
 		F37701F829DCA2F000D06AF8 = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +93,7 @@
 		F377020329DCA2F000D06AF8 /* ios-easy-expense */ = {
 			isa = PBXGroup;
 			children = (
+				F3631AE829EB6A4C00FC347F /* Audios */,
 				F377021C29DCA33600D06AF8 /* View Controllers */,
 				F377021B29DCA33000D06AF8 /* Classes */,
 				F377021A29DCA32200D06AF8 /* Storyboards */,
@@ -125,6 +146,8 @@
 				F329C16F29DE232300285C4D /* NewTransactionViewController.swift */,
 				F37F102729E21AE1006675EE /* ViewTransactionsViewController.swift */,
 				F377020829DCA2F000D06AF8 /* ViewController.swift */,
+				F3631AE429EB5E1800FC347F /* WebViewController.swift */,
+				F347554F29EBA54F006A2F6A /* BudgetBuilderViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -132,6 +155,8 @@
 		F37F102929E21EF2006675EE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F365F1EC29EB3BE400EEA9FA /* Vision.framework */,
+				F365F1EA29EB31AF00EEA9FA /* CoreHaptics.framework */,
 				F37F102A29E21EF2006675EE /* libsqlite3.0.tbd */,
 				F37F102B29E21EF2006675EE /* libsqlite3.tbd */,
 			);
@@ -199,6 +224,7 @@
 				F37F102629E21A80006675EE /* EasyExpense.db in Resources */,
 				F377021129DCA2F100D06AF8 /* LaunchScreen.storyboard in Resources */,
 				F377020E29DCA2F100D06AF8 /* Assets.xcassets in Resources */,
+				F3631AEA29EB6A7F00FC347F /* Cash-Register-Audio.mp3 in Resources */,
 				F377020C29DCA2F000D06AF8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -213,10 +239,12 @@
 				F377020929DCA2F000D06AF8 /* ViewController.swift in Sources */,
 				F377020529DCA2F000D06AF8 /* AppDelegate.swift in Sources */,
 				F37F102829E21AE1006675EE /* ViewTransactionsViewController.swift in Sources */,
+				F347555029EBA54F006A2F6A /* BudgetBuilderViewController.swift in Sources */,
 				F377021E29DCA36900D06AF8 /* Transaction.swift in Sources */,
 				F377020729DCA2F000D06AF8 /* SceneDelegate.swift in Sources */,
 				F3C9748929E7844B003A0A95 /* CustomCell.swift in Sources */,
 				F329C17029DE232300285C4D /* NewTransactionViewController.swift in Sources */,
+				F3631AE529EB5E1800FC347F /* WebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

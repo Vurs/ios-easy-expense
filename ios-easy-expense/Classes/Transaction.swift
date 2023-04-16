@@ -46,6 +46,17 @@ class Transaction: NSObject {
     func getDateAsString() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        let date = self.date!
+        let dateString = dateFormatter.string(from: date)
+        
+        return dateString
+    }
+    
+    func getDateAsReadableString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        
         let date = self.date!
         let dateString = dateFormatter.string(from: date)
         

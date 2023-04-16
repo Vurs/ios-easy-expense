@@ -27,6 +27,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         checkAndCreateDatabase()
         readDataFromDatabase()
         
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
+            if granted {
+                print("Push Notification permission granted")
+            } else {
+                print("Push Notification permission denied")
+            }
+        }
+        
         return true
     }
     
