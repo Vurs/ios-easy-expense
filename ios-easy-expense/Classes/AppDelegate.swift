@@ -3,6 +3,8 @@
 //  ios-easy-expense
 //
 //  Created by Vincent Ursino on 2023-04-04.
+//  This class handles all database functionality and allows other classes to use its methods for saving to the DB
+//  and fetching from it.
 //
 
 import UIKit
@@ -14,7 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var databaseName : String? = "EasyExpense.db"
     var databasePath : String?
     var transactions : [Transaction] = []
-
+    
+    /// This method is called automatically when the app is finished launching.
+    /// - Parameters:
+    ///     - application: the UIApplication
+    ///     - launchOptions: The UIApplication.LaunchOptionKey
+    /// - Returns: true if successful
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -27,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         checkAndCreateDatabase()
         readDataFromDatabase()
         
+        // Request authorization to push notifications
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
             if granted {
                 print("Push Notification permission granted")
@@ -38,6 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    /// This method is used to read data from the SQLite database.
     func readDataFromDatabase() {
         transactions.removeAll()
         
@@ -48,13 +57,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             // Setup our query
             var queryStatement : OpaquePointer? = nil
-            var queryStatementString : String = "select * from entries"
+            let queryStatementString : String = "select * from entries"
             
             if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
                 // While there is a row
                 while sqlite3_step(queryStatement) == SQLITE_ROW {
                     // Extract a row, put it inside a Transaction object, and put that object inside the Transactions array
-                    let id : Int = Int(sqlite3_column_int(queryStatement, 0))
                     let type : Int = Int(sqlite3_column_int(queryStatement, 1))
                     let recurring : Int = Int(sqlite3_column_int(queryStatement, 3))
                     let amount : Decimal = Decimal(sqlite3_column_double(queryStatement, 5))
@@ -107,6 +115,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    /// This method is used to check if the database exists, and create it if it does not already exist.
     func checkAndCreateDatabase() {
         var success = false
         
@@ -124,13 +133,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return
     }
     
+    /// This method is used to insert a Transaction object into the SQLite database.
+    /// - Parameters:
+    ///     - transaction: The Transaction object to be inserted into the database.
+    /// - Returns: A bool for success or failure.
     func insertIntoDatabase(transaction : Transaction) -> Bool {
         var db : OpaquePointer? = nil
         var returnCode : Bool = true
         
         if sqlite3_open(self.databasePath, &db) == SQLITE_OK {
             var insertStatement : OpaquePointer? = nil
-            var insertStatementString : String = "insert into entries values(NULL, ?, ?, ?, ?, ?, ?)"
+            let insertStatementString : String = "insert into entries values(NULL, ?, ?, ?, ?, ?, ?)"
             
             if sqlite3_prepare_v2(db, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
                 let transactionType = transaction.transactionType.rawValue

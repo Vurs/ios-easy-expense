@@ -143,6 +143,9 @@
                                     <navigationItem title="New Transaction" id="N8c-i3-Qsk">
                                         <barButtonItem key="leftBarButtonItem" image="arrow.backward" catalog="system" id="PN2-UH-Jaf">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <segue destination="q6X-Bl-iQE" kind="unwind" unwindAction="unwindToHomeViewControllerWithSender:" id="akh-lS-Bsv"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -218,7 +221,7 @@
                                 <rect key="frame" x="20" y="653" width="388" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Amount Transacted" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEk-c7-fxf">
                                 <rect key="frame" x="20" y="621" width="186" height="24"/>
@@ -259,6 +262,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S7a-P9-b3Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="q6X-Bl-iQE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1005.1401869158877" y="77.105831533477328"/>
         </scene>
@@ -281,6 +285,9 @@
                                     <navigationItem title="Budget Builder" id="UdC-yU-PB6">
                                         <barButtonItem key="leftBarButtonItem" image="arrow.backward" catalog="system" id="FK8-VR-ZQA">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <segue destination="dTt-6N-Fhm" kind="unwind" unwindAction="unwindToHomeViewControllerWithSender:" id="XSz-mV-tce"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -351,6 +358,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Psh-Bf-t62" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="dTt-6N-Fhm" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1003.7383177570093" y="756.80345572354213"/>
         </scene>
@@ -382,6 +390,9 @@
                                     <navigationItem title="View Transactions" id="SR0-1v-vK6">
                                         <barButtonItem key="leftBarButtonItem" image="arrow.backward" catalog="system" id="c2V-Lt-3O8">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <segue destination="ftA-pm-ZTu" kind="unwind" unwindAction="unwindToHomeViewControllerWithSender:" id="fdc-N1-0f4"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -411,6 +422,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a8v-r9-wBj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="ftA-pm-ZTu" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1958.4112149532709" y="84.233261339092877"/>
         </scene>
@@ -433,6 +445,9 @@
                                     <navigationItem title="Budgeting Help" id="wXv-al-hDS">
                                         <barButtonItem key="leftBarButtonItem" image="arrow.backward" catalog="system" id="xCO-e0-ZGx">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <segue destination="I56-Hb-UMI" kind="unwind" unwindAction="unwindToHomeViewControllerWithSender:" id="ByY-k3-YSx"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -460,6 +475,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dhL-ly-WCn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="I56-Hb-UMI" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2875.233644859813" y="84.233261339092877"/>
         </scene>

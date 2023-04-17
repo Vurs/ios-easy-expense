@@ -2,7 +2,9 @@
 //  NewTransactionViewController.swift
 //  ios-easy-expense
 //
-//  Created by Vincent Ursino on 2023-04-05.
+//  Created by Enrico Ginocchi on 2023-04-05.
+//  This class handles the NewTransactionViewController. It handles fetching input and mapping it to a Transaction object,
+//  image uploads, OCR text scanning, haptics, and audio playing.
 //
 
 import UIKit
@@ -12,6 +14,10 @@ import AVFoundation
 
 class NewTransactionViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    /// This method is used to remove the keyboard when enter is pressed.
+    /// - Parameters:
+    ///     - textField: The UITextField
+    /// - Returns: textField.resignFirstResponder()
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return textField.resignFirstResponder()
     }
@@ -30,6 +36,10 @@ class NewTransactionViewController: UIViewController, UITextFieldDelegate, UIIma
     
     var soundPlayer : AVAudioPlayer?
     
+    /// This method uses the OCR to scan receipt images and return the text that is found.
+    /// - Parameters:
+    ///     - image: The image to apply OCR scanning on.
+    /// - Returns: A string containing all text found in the image, separated by '\n'.
     func readTextFromImage(image: UIImage) -> String? {
         guard let cgImage = image.cgImage else {
             print("Error: Could not convert UIImage to CGImage")
@@ -58,19 +68,29 @@ class NewTransactionViewController: UIViewController, UITextFieldDelegate, UIIma
         return recognizedText
     }
     
+    /// This method uses the string created by the OCR to find the Total price.
+    /// - Parameters:
+    ///     - ocrText: The text returned by the OCR.
+    /// - Returns: The price found by the algorithm, or 0.0 if it could not be found.
     func determineTotalAlgo(ocrText: String) -> String {
+        // Convert the string to an array of strings
         let lines = ocrText.components(separatedBy: "\n")
         
+        // Set defaults
         var totalPrice = 0.0
         var totalString = "0.0"
         
         for i in 0..<lines.count {
+            // If the word "total" is found
             if lines[i].uppercased() == "TOTAL" {
+                // Start at the index of total + 1, and increment forward until a price is found
                 for x in (i + 1)..<lines.count {
+                    // If it can be converted to a number, it is the price
                     if let total = Double(lines[x]) {
                         totalPrice = total
                         break
                     } else {
+                        // Maybe there was a $ in front of the price, let's account for that
                         let substring = String(lines[x].dropFirst())
                         if let total = Double(substring) {
                             totalPrice = total
@@ -93,6 +113,9 @@ class NewTransactionViewController: UIViewController, UITextFieldDelegate, UIIma
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        nameTextField.delegate = self
+        amtTransactedTextField.delegate = self
         
         // Check if the device supports haptics.
         let hapticCapability = CHHapticEngine.capabilitiesForHardware()
@@ -120,6 +143,7 @@ class NewTransactionViewController: UIViewController, UITextFieldDelegate, UIIma
         }
     }
     
+    /// This method is called when the user clicks the Save button. It maps each input to a Transaction object and inserts it into the database.
     @IBAction func createTransaction() {
         let transactionTypeIndex = ttSegControl.selectedSegmentIndex
         let transactionType = Transaction.TransactionType.allCases[transactionTypeIndex]
@@ -158,10 +182,10 @@ class NewTransactionViewController: UIViewController, UITextFieldDelegate, UIIma
         let mainDelegate = UIApplication.shared.delegate as! AppDelegate
         
         let returnCode = mainDelegate.insertIntoDatabase(transaction: transaction)
-        let returnMsg : String = returnCode == true ? "Transaction added" : "Transaction add failed"
+        let returnMsg : String = returnCode == true ? "Transaction added!" : "Transaction add failed!"
         
         // Display an alert to the user, letting them know if their upload was successful or not
-        let alertController = UIAlertController(title: "SQLite Add", message: returnMsg, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Success", message: returnMsg, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
         
@@ -194,12 +218,15 @@ class NewTransactionViewController: UIViewController, UITextFieldDelegate, UIIma
 
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         
-        // Play cha-ching
+        // Play cha-ching noise
         playCashRegisterAudio()
         
         present(alertController, animated: true)
     }
     
+    /// This method is called when the user clicks the image upload button, and allows them to select an image via camera or camera roll.
+    /// - Parameters:
+    ///     - sender: The button that called the method.
     @IBAction func selectImage(_ sender: UIButton) {
         let alert = UIAlertController(title: "Choose Image Source", message: nil, preferredStyle: .actionSheet)
         
@@ -216,6 +243,7 @@ class NewTransactionViewController: UIViewController, UITextFieldDelegate, UIIma
         self.present(alert, animated: true, completion: nil)
     }
     
+    /// This method is a helper method used by the selectImage() method and it is used to pull up the camera.
     func openCamera()
     {
         if(UIImagePickerController.isSourceTypeAvailable(.camera))
@@ -233,6 +261,7 @@ class NewTransactionViewController: UIViewController, UITextFieldDelegate, UIIma
         }
     }
     
+    /// This method is a helper method used by the selectImage() method and it is used to pull up the gallery.
     func openGallery()
     {
         let picker = UIImagePickerController()
@@ -241,6 +270,10 @@ class NewTransactionViewController: UIViewController, UITextFieldDelegate, UIIma
         self.present(picker, animated: true, completion: nil)
     }
     
+    /// This method is automatically called when the user selects an image to upload.
+    /// - Parameters:
+    ///     - picker: The UIImagePickerController.
+    ///     - info: The UIImagePickerController.InfoKey
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             self.selectedImage = pickedImage
@@ -257,10 +290,14 @@ class NewTransactionViewController: UIViewController, UITextFieldDelegate, UIIma
         picker.dismiss(animated: true, completion: nil)
     }
     
+    /// This method is automatically called when the image picker is cancelled.
+    /// - Parameters:
+    ///     - picker: The UIImagePickerController.
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
     
+    /// This method plays the cash register audio.
     func playCashRegisterAudio() {
         self.soundPlayer?.currentTime = 0
         self.soundPlayer?.numberOfLoops = 1

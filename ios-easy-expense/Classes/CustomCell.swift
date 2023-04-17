@@ -3,18 +3,32 @@
 //  ios-easy-expense
 //
 //  Created by Vincent Ursino on 2023-04-12.
+//  This class handles the custom table cell appearance.
 //
 
 import UIKit
 
 class CustomCell: UITableViewCell {
     
+    // The header label
     let headerLbl = UILabel()
+    
+    // The transaction name label
     let transactionNameLbl = UILabel()
+    
+    // The recurring label
     let recurringLbl = UILabel()
+    
+    // The date label
     let dateLbl = UILabel()
+    
+    // The attached image ImageView
     let attachedImgView = UIImageView()
     
+    /// This method is a constructor used for creating custom table cells.
+    /// - Parameters:
+    ///     - style: The UITableViewCell.CellStyle
+    ///     - reuseIdentifier: The reuse identifier
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         headerLbl.textAlignment = .left
         headerLbl.font = UIFont.boldSystemFont(ofSize: 24)
@@ -49,6 +63,7 @@ class CustomCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    /// This method is used to layout the UI elements of the cell.
     override func layoutSubviews() {
         headerLbl.frame = CGRect(x: 135, y: 5, width: 460, height: 30)
         transactionNameLbl.frame = CGRect(x: 135, y: 40, width: 460, height: 24)
