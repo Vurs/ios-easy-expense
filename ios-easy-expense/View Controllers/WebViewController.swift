@@ -2,7 +2,7 @@
 //  WebViewController.swift
 //  ios-easy-expense
 //
-//  Created by Vincent Ursino on 2023-04-15.
+//  Created by Enrico Ginocchi on 2023-04-15.
 //  This class handles loading the predefined website onto the WebKit View and the animating of the custom Activity Indicator.
 //
 

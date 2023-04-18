@@ -69,6 +69,7 @@ class NewTransactionViewController: UIViewController, UITextFieldDelegate, UIIma
     }
     
     /// This method uses the string created by the OCR to find the Total price.
+    /// Written by: Vincent Ursino & Enrico Ginocchi
     /// - Parameters:
     ///     - ocrText: The text returned by the OCR.
     /// - Returns: The price found by the algorithm, or 0.0 if it could not be found.
